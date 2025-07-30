@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dbwmhd617ms0a"]
+
+[ext_resource type="PackedScene" uid="uid://nqdngni4b3hw" path="res://car.tscn" id="1_h2yge"]
+[ext_resource type="PackedScene" uid="uid://dekowflcwmdca" path="res://floor.tscn" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://ceu1fqdy6n1d8" path="res://car.gd" id="2_1bvp3"]
+[ext_resource type="Script" uid="uid://caga4prc3hgvn" path="res://game_controller.gd" id="4_1bvp3"]
+
+[node name="Main" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.615386, -0.24241, 0.750024, 0, 0.951535, 0.307539, -0.788226, 0.189256, -0.585562, 1.75472, 1.5601, -2.41932)
+
+[node name="Car" parent="." instance=ExtResource("1_h2yge")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.094003, 0.635725, 0)
+script = ExtResource("2_1bvp3")
+
+[node name="Floor" parent="." instance=ExtResource("1_ig7tw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 35.9615, 0.302107, 0, -130.524)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.951535, 0.307539, 0, -0.307539, 0.951535, -0.247372, 1.33165, 1.53903)
+
+[node name="GameController" type="Node" parent="."]
+script = ExtResource("4_1bvp3")
