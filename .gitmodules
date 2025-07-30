@@ -1,0 +1,3 @@
+[submodule "3rdParty/MAdvanced-Vehicle-Controller"]
+	path = 3rdParty/MAdvanced-Vehicle-Controller
+	url = https://github.com/Ben-Bingham/MAdvanced-Vehicle-Controller.git
