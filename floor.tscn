@@ -1,6 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cmqht2bglicqw"]
+[gd_scene load_steps=6 format=3 uid="uid://cmqht2bglicqw"]
 
 [ext_resource type="Texture2D" uid="uid://cirjjh6v70hv5" path="res://icon.svg" id="1_oj3tl"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_oj3tl"]
+friction = 20.0
+rough = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7dm0k"]
 size = Vector3(100, 1, 100)
@@ -13,6 +17,7 @@ uv1_triplanar = true
 size = Vector3(100, 1, 100)
 
 [node name="Floor" type="StaticBody3D"]
+physics_material_override = SubResource("PhysicsMaterial_oj3tl")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_7dm0k")
