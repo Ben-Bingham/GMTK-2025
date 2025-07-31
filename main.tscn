@@ -1,24 +1,79 @@
-[gd_scene load_steps=5 format=3 uid="uid://dbwmhd617ms0a"]
+[gd_scene load_steps=4 format=3 uid="uid://dbwmhd617ms0a"]
 
-[ext_resource type="PackedScene" uid="uid://nqdngni4b3hw" path="res://car.tscn" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://dekowflcwmdca" path="res://floor.tscn" id="1_ig7tw"]
-[ext_resource type="Script" uid="uid://ceu1fqdy6n1d8" path="res://car.gd" id="2_1bvp3"]
 [ext_resource type="Script" uid="uid://caga4prc3hgvn" path="res://game_controller.gd" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://bat0h5s3lfqru" path="res://3rdParty/MAdvanced-Vehicle-Controller/Advanced Vehicle Controller/Vehicle/GT30/GT30.tscn" id="5_7mycd"]
 
 [node name="Main" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.615386, -0.24241, 0.750024, 0, 0.951535, 0.307539, -0.788226, 0.189256, -0.585562, 1.75472, 1.5601, -2.41932)
 
-[node name="Car" parent="." instance=ExtResource("1_h2yge")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.094003, 0.635725, 0)
-script = ExtResource("2_1bvp3")
-
-[node name="Floor" parent="." instance=ExtResource("1_ig7tw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 35.9615, 0.302107, 0, -130.524)
-
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.951535, 0.307539, 0, -0.307539, 0.951535, -0.247372, 1.33165, 1.53903)
 
 [node name="GameController" type="Node" parent="."]
 script = ExtResource("4_1bvp3")
+
+[node name="Floor" parent="." instance=ExtResource("1_ig7tw")]
+
+[node name="Floor2" parent="." instance=ExtResource("1_ig7tw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 19.9528)
+
+[node name="Floor3" parent="." instance=ExtResource("1_ig7tw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 39.3589)
+
+[node name="Floor9" parent="." instance=ExtResource("1_ig7tw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.4436, 0, 39.3589)
+
+[node name="Floor10" parent="." instance=ExtResource("1_ig7tw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.2673, 0, 39.3589)
+
+[node name="Floor11" parent="." instance=ExtResource("1_ig7tw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.2673, 0, 19.6752)
+
+[node name="Floor12" parent="." instance=ExtResource("1_ig7tw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.6802, 0, 19.6752)
+
+[node name="Floor13" parent="." instance=ExtResource("1_ig7tw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.6802, 0, -0.0158558)
+
+[node name="Floor14" parent="." instance=ExtResource("1_ig7tw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.6802, 0, -19.8932)
+
+[node name="Floor15" parent="." instance=ExtResource("1_ig7tw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.6802, 0, -39.6062)
+
+[node name="Floor16" parent="." instance=ExtResource("1_ig7tw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.8823, 0, -39.6062)
+
+[node name="Floor17" parent="." instance=ExtResource("1_ig7tw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.4733, 0, -39.6062)
+
+[node name="Floor18" parent="." instance=ExtResource("1_ig7tw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.360121, 0, -39.6062)
+
+[node name="Floor19" parent="." instance=ExtResource("1_ig7tw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.360121, 0, -24.1761)
+
+[node name="Floor20" parent="." instance=ExtResource("1_ig7tw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.360121, 0, -14.2779)
+
+[node name="Floor4" parent="." instance=ExtResource("1_ig7tw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 59.0821)
+
+[node name="Floor5" parent="." instance=ExtResource("1_ig7tw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 78.7894)
+
+[node name="Floor6" parent="." instance=ExtResource("1_ig7tw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 98.6882)
+
+[node name="Floor7" parent="." instance=ExtResource("1_ig7tw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 118.275)
+
+[node name="Floor8" parent="." instance=ExtResource("1_ig7tw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 137.238)
+
+[node name="GT30" parent="." instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.400403, 0.329193, -2.19348)
+is_current_veh = true
