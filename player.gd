@@ -12,9 +12,13 @@ var right = Vector3(1.0 ,0.0, 0.0);
 
 enum State { IDLE, RUNNING, JUMPING, FALLING }
 var state = State.FALLING;
+var lastState = state;
+
+var hitPos = Vector3();
 
 func _ready():
 	motion_mode = CharacterBody3D.MOTION_MODE_GROUNDED;
+	hitPos = position;
 
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -27,6 +31,16 @@ func _input(event):
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-70.0), deg_to_rad(89.9));
 
 func _physics_process(dt):
+	if Input.is_action_pressed("grapple"):
+		var space_state = get_world_3d().direct_space_state;
+		var query = PhysicsRayQueryParameters3D.create(get_node("Camera3D").position, forward);
+		query.exclude = [self];
+		var result = space_state.intersect_ray(query);
+		if result:
+			hitPos = result.position;
+		else:
+			hitPos = position;
+	
 	match state:
 		State.IDLE:
 			if Input.get_vector("move_left", "move_right", "move_backward", "move_forward"):
@@ -68,6 +82,6 @@ func _physics_process(dt):
 			var vy = velocity.y;
 			velocity.y = 0;
 			velocity = transform.basis * Vector3(input.x, 0.0, input.y) * airSpeed;
-			velocity.y = vy;
+			velocity.y = vy;			
 
 	move_and_slide();
