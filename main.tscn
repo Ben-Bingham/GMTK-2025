@@ -16,6 +16,11 @@ script = ExtResource("1_0xm2m")
 [node name="Player" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.39905, 0)
 script = ExtResource("1_ig7tw")
+lookSensitivity = null
+groundSpeed = null
+jumpSpeed = null
+gravity = null
+grappleSpeed = null
 
 [node name="Camera3D" type="Camera3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.474043, -0.291093)
