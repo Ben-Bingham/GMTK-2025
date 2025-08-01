@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bdk1ln40ogjde"]
+[gd_scene load_steps=9 format=3 uid="uid://bdk1ln40ogjde"]
 
 [ext_resource type="Script" uid="uid://bs73nnkk5gwx6" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://bqes2de80x08j" path="res://player.gd" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://d2rd4gi675eyo" path="res://grapple.gd" id="3_lquwl"]
 [ext_resource type="PackedScene" uid="uid://cy17tvc7chv6h" path="res://smallBox.tscn" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://cp7j7pvxr81fk" path="res://mediumBox.tscn" id="5_7mycd"]
+[ext_resource type="PackedScene" uid="uid://0nohxjpd1ve" path="res://largeBox.tscn" id="6_272bh"]
 
 [sub_resource type="ImmediateMesh" id="ImmediateMesh_7mycd"]
 
@@ -13,7 +15,7 @@
 script = ExtResource("1_0xm2m")
 
 [node name="Player" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.39905, 0)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 2.39905, 0)
 script = ExtResource("1_ig7tw")
 
 [node name="Camera3D" type="Camera3D" parent="Player"]
@@ -36,9 +38,11 @@ shape = SubResource("CapsuleShape3D_7dm0k")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Test World"]
 transform = Transform3D(0.89355, -0.251752, 0.371738, 0.017458, 0.846849, 0.531546, -0.448624, -0.468474, 0.761097, 0, 6.42251, 0)
+visible = false
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="Test World"]
 transform = Transform3D(1, 0, 0, 0, -0.741824, 0.670595, 0, -0.670595, -0.741824, 26.1271, 36.7534, -36.557)
+visible = false
 light_energy = 0.125
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -62,3 +66,402 @@ text = "O"
 
 [node name="SmallBox" parent="Level" instance=ExtResource("4_1bvp3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.8464, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Level"]
+transform = Transform3D(0.608983, 0.55138, -0.570193, 0, 0.718867, 0.695148, 0.793183, -0.423333, 0.437778, -10.5729, 4.76333, 7.30849)
+
+[node name="SmallBox2" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, -24)
+
+[node name="SmallBox3" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72, -96.458, 24.4143)
+
+[node name="SmallBox4" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 173, 0, -29)
+
+[node name="SmallBox5" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 244, 0, 55)
+
+[node name="SmallBox6" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 109, 32.6055, 124.207)
+
+[node name="SmallBox7" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 131, 95.0994, -87)
+
+[node name="SmallBox8" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 159.771, 0, 49.9093)
+
+[node name="SmallBox9" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 242.776, 0, -108.165)
+
+[node name="SmallBox10" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 610.776, 168.462, 173.154)
+
+[node name="SmallBox11" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 962.776, -180.247, -113.938)
+
+[node name="SmallBox12" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1553.82, -28.789, 255.421)
+
+[node name="SmallBox13" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1132.78, -79.7133, 120.835)
+
+[node name="SmallBox14" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1529.82, -119.813, -168.937)
+
+[node name="SmallBox15" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1414.82, -149, 145.309)
+
+[node name="SmallBox16" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 890.776, 61.1354, 246.947)
+
+[node name="SmallBox17" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 614.776, 100.534, -40.1647)
+
+[node name="SmallBox18" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 477.513, 0, -50.8896)
+
+[node name="SmallBox41" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 515.513, -126.346, 82.1104)
+
+[node name="SmallBox19" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 416.776, -194.275, -168.185)
+
+[node name="SmallBox20" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 834.776, 103.251, 94.0424)
+
+[node name="SmallBox21" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1205.78, -79.7133, -78.1647)
+
+[node name="SmallBox42" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1290.01, -149, 69.9187)
+
+[node name="SmallBox23" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2197.78, -31.5061, 24.8353)
+
+[node name="SmallBox24" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2073.78, -119.813, -161.412)
+
+[node name="SmallBox25" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2027.78, -28.789, 165.947)
+
+[node name="SmallBox26" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2326.78, -94, -72.1647)
+
+[node name="SmallBox29" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1863.78, -235.291, -67.9377)
+
+[node name="SmallBox30" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1792.78, -138.833, 129.947)
+
+[node name="SmallBox31" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1619.82, -136.116, -38.2763)
+
+[node name="SmallBox32" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1402.82, -180.247, 48.5364)
+
+[node name="SmallBox33" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1269.68, -83.789, 172.166)
+
+[node name="SmallBox34" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1067.25, -121.829, -28.9018)
+
+[node name="SmallBox35" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1031.93, -83.789, 181.675)
+
+[node name="SmallBox36" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 780.594, 100.534, -121.284)
+
+[node name="SmallBox37" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 734.594, 146.725, 135.923)
+
+[node name="SmallBox38" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 332.833, -137.215, 131.744)
+
+[node name="SmallBox59" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 771, 103.251, 127.207)
+
+[node name="SmallBox61" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 658, 100.534, -8)
+
+[node name="SmallBox62" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 686.771, 146.725, 122.117)
+
+[node name="SmallBox73" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 769.776, 100.534, -29.1647)
+
+[node name="SmallBox74" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 943.776, -180.247, -57.9377)
+
+[node name="SmallBox75" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 859.833, 63.8525, 174.062)
+
+[node name="SmallBox39" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 653.454, 74.7209, -233.71)
+
+[node name="SmallBox40" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 427.933, 67.9282, 165.707)
+
+[node name="SmallBox27" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2408.78, 47.2906, 196.947)
+
+[node name="SmallBox28" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2408.78, 47.2906, 196.947)
+
+[node name="SmallBox43" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1319.95, -83.789, 238.365)
+
+[node name="SmallBox44" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1671.95, -235.291, -55.5194)
+
+[node name="SmallBox45" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2262.99, -28.789, 313.839)
+
+[node name="SmallBox46" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1841.95, -138.833, 149.365)
+
+[node name="SmallBox47" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2238.99, -31.5061, -79.2724)
+
+[node name="SmallBox48" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2123.99, -28.789, 173.839)
+
+[node name="SmallBox49" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1599.95, -28.789, 305.365)
+
+[node name="SmallBox50" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1323.95, -180.247, 30.4806)
+
+[node name="SmallBox51" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1186.68, 5.8762, 7.52872)
+
+[node name="SmallBox52" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1224.68, -79.7133, 140.529)
+
+[node name="SmallBox53" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1125.95, -79.7133, -90.7465)
+
+[node name="SmallBox54" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1543.95, -28.789, 129.365)
+
+[node name="SmallBox55" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1914.95, -136.116, -33.3322)
+
+[node name="SmallBox56" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1999.18, -94, 128.337)
+
+[node name="SmallBox57" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2331.95, -94, 147.254)
+
+[node name="SmallBox63" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2501.95, -28.789, 188.365)
+
+[node name="SmallBox64" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2328.99, -136.116, 20.1419)
+
+[node name="SmallBox65" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2111.99, -94, 94.7276)
+
+[node name="SmallBox66" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1978.85, 44.5734, 230.584)
+
+[node name="SmallBox67" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1776.42, -235.291, 55.3292)
+
+[node name="SmallBox68" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1741.1, -138.833, 240.094)
+
+[node name="SmallBox69" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1489.76, -94, -62.8658)
+
+[node name="SmallBox70" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1443.76, -28.789, 171.246)
+
+[node name="SmallBox71" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1362.62, -206.06, -163.065)
+
+[node name="SmallBox72" parent="Level" instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1137.1, -14.5023, 230.919)
+
+[node name="SmallBox" parent="." instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 325.878, -168.462, -37.3993)
+
+[node name="SmallBox2" parent="." instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 406.033, -137.215, 98.457)
+
+[node name="SmallBox3" parent="." instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200.89, 67.9282, 167.744)
+
+[node name="SmallBox4" parent="." instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 234.854, 0, 3.35759)
+
+[node name="SmallBox5" parent="." instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 105.791, 29.8884, -42.8336)
+
+[node name="SmallBox6" parent="." instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 631.555, 100.534, -114.837)
+
+[node name="SmallBox7" parent="." instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 960.327, -149, 60.4172)
+
+[node name="SmallBox8" parent="." instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1261.93, -180.247, -12.9452)
+
+[node name="SmallBox9" parent="." instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1223.89, -79.7133, 79.4371)
+
+[node name="SmallBox10" parent="." instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1136.94, -14.5023, 181.329)
+
+[node name="SmallBox11" parent="." instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1480.66, -94, 99.8155)
+
+[node name="SmallBox12" parent="." instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1613.8, -94, -91.7419)
+
+[node name="SmallBox13" parent="." instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1689.88, -204.044, 143.29)
+
+[node name="SmallBox14" parent="." instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1908.6, -94, 91.6642)
+
+[node name="SmallBox15" parent="." instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2082.5, -136.116, -52.3436)
+
+[node name="SmallBox16" parent="." instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2229.23, -31.5061, 124.27)
+
+[node name="SmallBox17" parent="." instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2105.6, -28.789, 318.544)
+
+[node name="SmallBox18" parent="." instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1829.81, -138.833, 304.959)
+
+[node name="SmallBox19" parent="." instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1628.74, -28.789, 193.556)
+
+[node name="SmallBox20" parent="." instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1433.11, -28.789, 257.409)
+
+[node name="SmallBox21" parent="." instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1323.06, -149, 121.553)
+
+[node name="SmallBox22" parent="." instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1010.59, -149, 90.3056)
+
+[node name="SmallBox23" parent="." instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1025.54, -180.247, -86.3076)
+
+[node name="SmallBox24" parent="." instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 832.622, 100.534, -98.5347)
+
+[node name="SmallBox25" parent="." instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 630.196, 100.534, 69.9272)
+
+[node name="SmallBox26" parent="." instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 463.093, 0, 19.6604)
+
+[node name="SmallBox27" parent="." instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 525.587, -183.406, -161.028)
+
+[node name="SmallBox28" parent="." instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 293.272, -194.275, -151.518)
+
+[node name="SmallBox29" parent="." instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 809.526, 74.7209, -254.769)
+
+[node name="SmallBox30" parent="." instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1219.81, -105.526, -201.785)
+
+[node name="SmallBox31" parent="." instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 736.341, 146.725, 81.5137)
+
+[node name="SmallBox32" parent="." instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1366.71, -180.247, -50.2669)
+
+[node name="SmallBox33" parent="." instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1691, -235.291, -112.773)
+
+[node name="SmallBox34" parent="." instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1934.59, -119.813, -202.426)
+
+[node name="SmallBox35" parent="." instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 682, 211.936, 189.319)
+
+[node name="SmallBox36" parent="." instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 915.672, -149, 103.251)
+
+[node name="SmallBox37" parent="." instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 823, 100.534, -11)
+
+[node name="SmallBox38" parent="." instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 709.17, 146.725, 122.271)
+
+[node name="SmallBox39" parent="." instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 311.111, -168.462, 42.1155)
+
+[node name="SmallBox40" parent="." instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 286.657, -72.0038, 123.629)
+
+[node name="SmallBox41" parent="." instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1594.95, -136.116, 28.5298)
+
+[node name="SmallBox42" parent="." instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1761, -235.291, -107.773)
+
+[node name="SmallBox43" parent="." instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1652.01, -119.813, -239.107)
+
+[node name="SmallBox44" parent="." instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1671, -204.044, 67)
+
+[node name="SmallBox45" parent="." instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1691.41, -138.833, 236.39)
+
+[node name="SmallBox46" parent="." instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1498.08, -28.789, 291.095)
+
+[node name="LargeBox" parent="." instance=ExtResource("6_272bh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1018.75, -174.813, -268.355)
+
+[node name="LargeBox2" parent="." instance=ExtResource("6_272bh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 964.403, -180.247, 40.0388)
+
+[node name="LargeBox3" parent="." instance=ExtResource("6_272bh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 526.945, -61.1354, 141.931)
+
+[node name="LargeBox4" parent="." instance=ExtResource("6_272bh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 551.399, -157.593, 21.0189)
+
+[node name="LargeBox5" parent="." instance=ExtResource("6_272bh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 342.181, -168.462, 54.983)
+
+[node name="LargeBox6" parent="." instance=ExtResource("6_272bh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 230.778, 0, -46.9092)
+
+[node name="LargeBox7" parent="." instance=ExtResource("6_272bh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1626.02, -94, 114.76)
+
+[node name="LargeBox8" parent="." instance=ExtResource("6_272bh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1755.09, -235.291, -21.0966)
+
+[node name="LargeBox9" parent="." instance=ExtResource("6_272bh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2018.65, -94, -67.2877)
+
+[node name="LargeBox10" parent="." instance=ExtResource("6_272bh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2202.05, 36.4221, 166.385)
+
+[node name="LargeBox11" parent="." instance=ExtResource("6_272bh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2274.06, -119.813, -197.71)
+
+[node name="LargeBox12" parent="." instance=ExtResource("6_272bh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1089.39, -79.7133, 53.6244)
+
+[node name="LargeBox13" parent="." instance=ExtResource("6_272bh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 937.231, -149, 158.234)
+
+[node name="LargeBox14" parent="." instance=ExtResource("6_272bh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 700.841, 144.008, -102.61)
+
+[node name="LargeBox15" parent="." instance=ExtResource("6_272bh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 700.841, 144.008, -102.61)
