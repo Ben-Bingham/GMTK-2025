@@ -1,15 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://cy17tvc7chv6h"]
+[gd_scene load_steps=4 format=3 uid="uid://cp7j7pvxr81fk"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oyhfb"]
-size = Vector3(10, 10, 10)
+size = Vector3(20, 20, 20)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g2tbl"]
-albedo_color = Color(0.388235, 1, 1, 1)
+albedo_color = Color(0.913725, 0.223529, 0.960784, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_oq5cr"]
-size = Vector3(10, 10, 10)
+size = Vector3(20, 20, 20)
 
-[node name="Box" type="StaticBody3D"]
+[node name="SmallBox" type="StaticBody3D"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_oyhfb")
