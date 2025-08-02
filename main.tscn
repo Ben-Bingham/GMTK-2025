@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bdk1ln40ogjde"]
+[gd_scene load_steps=22 format=3 uid="uid://bdk1ln40ogjde"]
 
 [ext_resource type="Script" uid="uid://bs73nnkk5gwx6" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://bqes2de80x08j" path="res://player.gd" id="1_ig7tw"]
@@ -38,11 +38,33 @@ albedo_color = Color(0, 0, 0, 1)
 radius = 10.0
 height = 20.0
 
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_5vw27"]
+turbidity = 7.1
+sun_disk_scale = 24.83
+energy_multiplier = 8.15
+
+[sub_resource type="Sky" id="Sky_kek77"]
+sky_material = SubResource("PhysicalSkyMaterial_5vw27")
+
+[sub_resource type="Environment" id="Environment_4c57u"]
+background_mode = 2
+sky = SubResource("Sky_kek77")
+ambient_light_source = 3
+reflected_light_source = 2
+ssr_enabled = true
+ssr_depth_tolerance = 8.31
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
+volumetric_fog_density = 0.0316
+adjustment_enabled = true
+adjustment_saturation = 1.3
+
 [node name="Main" type="Node"]
 script = ExtResource("1_0xm2m")
 
 [node name="Player" type="CharacterBody3D" parent="." node_paths=PackedStringArray("finishSphere")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 2.39905, 0)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 2.23389, 0)
 collision_layer = 2
 script = ExtResource("1_ig7tw")
 finishSphere = NodePath("../Level/Finish Line")
@@ -593,3 +615,6 @@ shape = SubResource("SphereShape3D_272bh")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Level/Finish Line"]
 material_override = SubResource("StandardMaterial3D_5vw27")
 mesh = SubResource("SphereMesh_kek77")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_4c57u")
