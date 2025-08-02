@@ -20,7 +20,7 @@ var state = State.FALLING;
 
 var grapplePoint = Vector3();
 var arcDistance = 0.0;
-var initRight = Vector3();
+var initialForward = Vector3();
 
 var lastVelocity = velocity;
 
@@ -63,6 +63,8 @@ func _physics_process(dt):
 				grapplePoint = rayCast.get_collision_point();
 				state = State.GRAPPLING;
 				start_grapple.emit();
+				initialForward = forward;
+				arcDistance = (grapplePoint - global_position).length();
 			
 			if rayCast.is_colliding():
 				can_swing.emit();
@@ -81,10 +83,13 @@ func _physics_process(dt):
 		State.RUNNING:
 			if !Input.get_vector("move_left", "move_right", "move_backward", "move_forward"):
 				state = State.IDLE;
+
 			if Input.is_action_pressed("grapple") && rayCast.is_colliding():
 				grapplePoint = rayCast.get_collision_point();
 				state = State.GRAPPLING;
 				start_grapple.emit();
+				initialForward = forward;
+				arcDistance = (grapplePoint - global_position).length();
 
 			if rayCast.is_colliding():
 				can_swing.emit();
@@ -115,6 +120,8 @@ func _physics_process(dt):
 				grapplePoint = rayCast.get_collision_point();
 				state = State.GRAPPLING;
 				start_grapple.emit();
+				initialForward = forward;
+				arcDistance = (grapplePoint - global_position).length();
 				
 			if rayCast.is_colliding():
 				can_swing.emit();
@@ -134,13 +141,8 @@ func _physics_process(dt):
 			velocity.y = vy;
 
 		State.GRAPPLING:
-			if arcDistance == 0.0:
-				arcDistance = (grapplePoint - global_position).length();
-			if initRight == Vector3():
-				initRight = forward;
-
 			var targetPos = (grapplePoint - global_position).normalized();
-			var directionOfTravel = initRight.cross(targetPos);
+			var directionOfTravel = initialForward.cross(targetPos);
 				
 			if (grapplePoint - finishSphere.global_position).length() < 11.0 && !hasWon:
 				finish.emit();
@@ -166,8 +168,6 @@ func _physics_process(dt):
 			if Input.is_action_just_released("grapple"):
 				state = State.FALLING;
 				stop_grapple.emit();
-				arcDistance = 0.0;
-				initRight = Vector3();
 
 	lastVelocity = velocity
 	move_and_slide();
