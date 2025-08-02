@@ -25,12 +25,13 @@ func _process(_dt):
 		var hook = $Hook;
 		var hookPoint = get_parent().get_parent().get_parent().grapplePoint;
 		hook.position = to_local(hookPoint);
-		
+
 		mesh.surface_begin(Mesh.PRIMITIVE_LINES);
 
-		mesh.surface_set_color(Color.RED);
-
-		mesh.surface_add_vertex(to_local(get_parent().get_parent().get_parent().grapplePoint));
-		mesh.surface_add_vertex(Vector3(0, 0, 0));
-		
+		var nudge = 0.001;
+		for x in range(-3, 3):
+			for z in range(-3, 3):
+				mesh.surface_add_vertex(to_local(hookPoint) + Vector3(x * nudge, 0.0, z * nudge));
+				mesh.surface_add_vertex(Vector3(x * nudge, 0.0, z * nudge));
+	
 		mesh.surface_end();
