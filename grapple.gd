@@ -23,7 +23,9 @@ func _process(_dt):
 
 	if grappling:
 		var hook = $Hook;
-		hook.position = to_local(get_parent().get_parent().get_parent().grapplePoint);
+		var hookPoint = get_parent().get_parent().get_parent().grapplePoint;
+		hook.position = to_local(hookPoint);
+		
 		mesh.surface_begin(Mesh.PRIMITIVE_LINES);
 
 		mesh.surface_set_color(Color.RED);
