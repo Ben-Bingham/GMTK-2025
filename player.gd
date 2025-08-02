@@ -26,6 +26,10 @@ signal cannot_swing;
 signal start_grapple;
 signal stop_grapple;
 
+signal finish;
+
+@export var finishSphere : StaticBody3D;
+
 func _ready():
 	motion_mode = CharacterBody3D.MOTION_MODE_GROUNDED;
 
@@ -125,6 +129,9 @@ func _physics_process(dt):
 			velocity.y = vy;
 
 		State.GRAPPLING:
+			if (grapplePoint - finishSphere.global_position).length() < 11.0:
+				finish.emit();
+			
 			var input = Input.get_vector("move_left", "move_right", "move_forward", "move_backward");
 			var vy = velocity.y;
 			velocity.y = 0;
