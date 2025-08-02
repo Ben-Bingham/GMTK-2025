@@ -26,11 +26,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.474043, -0.291093)
 transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0, -0.00312829, 0.291093)
 target_position = Vector3(0, -75, 0)
 
-[node name="Grapple" type="MeshInstance3D" parent="Player/Camera3D/RayCast3D"]
+[node name="Grapple" type="MeshInstance3D" parent="Player/Camera3D/RayCast3D" node_paths=PackedStringArray("player")]
 transform = Transform3D(1.91069e-15, 1, 4.37114e-08, 4.37114e-08, -4.37114e-08, 1, 1, 0, -4.37114e-08, -0.470915, 2.05843e-08, 0)
 mesh = SubResource("ImmediateMesh_7mycd")
 skeleton = NodePath("../../..")
 script = ExtResource("3_lquwl")
+player = NodePath("../../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
 shape = SubResource("CapsuleShape3D_7dm0k")

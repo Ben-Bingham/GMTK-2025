@@ -23,6 +23,9 @@ var grapplePoint = Vector3();
 signal can_swing;
 signal cannot_swing;
 
+signal start_grapple;
+signal stop_grapple;
+
 func _ready():
 	motion_mode = CharacterBody3D.MOTION_MODE_GROUNDED;
 
@@ -50,6 +53,7 @@ func _physics_process(dt):
 			if Input.is_action_pressed("grapple") && rayCast.is_colliding():
 				grapplePoint = rayCast.get_collision_point();
 				state = State.GRAPPLING;
+				start_grapple.emit();
 			
 			if rayCast.is_colliding():
 				can_swing.emit();
@@ -71,7 +75,8 @@ func _physics_process(dt):
 			if Input.is_action_pressed("grapple") && rayCast.is_colliding():
 				grapplePoint = rayCast.get_collision_point();
 				state = State.GRAPPLING;
-				
+				start_grapple.emit();
+
 			if rayCast.is_colliding():
 				can_swing.emit();
 			else:
@@ -100,6 +105,7 @@ func _physics_process(dt):
 			if Input.is_action_pressed("grapple") && rayCast.is_colliding():
 				grapplePoint = rayCast.get_collision_point();
 				state = State.GRAPPLING;
+				start_grapple.emit();
 				
 			if rayCast.is_colliding():
 				can_swing.emit();
@@ -140,5 +146,6 @@ func _physics_process(dt):
 
 			if Input.is_action_just_released("grapple"):
 				state = State.FALLING;
+				stop_grapple.emit();
 
 	move_and_slide();
