@@ -19,6 +19,10 @@ enum State { IDLE, RUNNING, JUMPING, FALLING, GRAPPLING }
 var state = State.FALLING;
 
 var grapplePoint = Vector3();
+var arcDistance = 0.0;
+var initRight = Vector3();
+
+var lastVelocity = velocity;
 
 signal can_swing;
 signal cannot_swing;
@@ -129,6 +133,14 @@ func _physics_process(dt):
 			velocity.y = vy;
 
 		State.GRAPPLING:
+			if arcDistance == 0.0:
+				arcDistance = (grapplePoint - global_position).length();
+			if initRight == Vector3():
+				initRight = forward;
+
+			var targetPos = (grapplePoint - global_position).normalized();
+			var directionOfTravel = initRight.cross(targetPos);
+				
 			if (grapplePoint - finishSphere.global_position).length() < 11.0:
 				finish.emit();
 			
@@ -143,16 +155,17 @@ func _physics_process(dt):
 			else:
 				cannot_swing.emit();
 
-			var distanceToGrapple = grapplePoint - global_position;
-			var accel = distanceToGrapple.normalized() * grappleAccel * dt;
+			var velLength = velocity.length();
 
-			if accel.length() < 0.5:
-				accel = Vector3();
+			velocity = directionOfTravel.normalized() * velLength;
 
-			velocity += accel;
+			velocity.y -= gravity * dt;
 
 			if Input.is_action_just_released("grapple"):
 				state = State.FALLING;
 				stop_grapple.emit();
+				arcDistance = 0.0;
+				initRight = Vector3();
 
+	lastVelocity = velocity
 	move_and_slide();
