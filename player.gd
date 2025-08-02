@@ -20,6 +20,9 @@ var state = State.FALLING;
 
 var grapplePoint = Vector3();
 
+signal can_swing;
+signal cannot_swing;
+
 func _ready():
 	motion_mode = CharacterBody3D.MOTION_MODE_GROUNDED;
 
@@ -47,6 +50,11 @@ func _physics_process(dt):
 			if Input.is_action_pressed("grapple") && rayCast.is_colliding():
 				grapplePoint = rayCast.get_collision_point();
 				state = State.GRAPPLING;
+			
+			if rayCast.is_colliding():
+				can_swing.emit();
+			else:
+				cannot_swing.emit();
 
 			var divisor = sqrt(velocity.length()) if velocity.length() > 0.0 else 2.0;
 			velocity -= velocity / divisor;
@@ -63,6 +71,11 @@ func _physics_process(dt):
 			if Input.is_action_pressed("grapple") && rayCast.is_colliding():
 				grapplePoint = rayCast.get_collision_point();
 				state = State.GRAPPLING;
+				
+			if rayCast.is_colliding():
+				can_swing.emit();
+			else:
+				cannot_swing.emit();
 
 			var input = Input.get_vector("move_left", "move_right", "move_forward", "move_backward");
 			var vy = velocity.y;
@@ -87,7 +100,12 @@ func _physics_process(dt):
 			if Input.is_action_pressed("grapple") && rayCast.is_colliding():
 				grapplePoint = rayCast.get_collision_point();
 				state = State.GRAPPLING;
-
+				
+			if rayCast.is_colliding():
+				can_swing.emit();
+			else:
+				cannot_swing.emit();
+				
 			velocity.y -= gravity * dt;
 
 			if is_on_floor():
@@ -106,6 +124,11 @@ func _physics_process(dt):
 			velocity.y = 0;
 			velocity += transform.basis * Vector3(input.x, 0.0, input.y) * grappleMoveAccel * dt;
 			velocity.y = vy;
+
+			if rayCast.is_colliding():
+				can_swing.emit();
+			else:
+				cannot_swing.emit();
 
 			var distanceToGrapple = grapplePoint - global_position;
 			var accel = distanceToGrapple.normalized() * grappleAccel * dt;

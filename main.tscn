@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bdk1ln40ogjde"]
+[gd_scene load_steps=10 format=3 uid="uid://bdk1ln40ogjde"]
 
 [ext_resource type="Script" uid="uid://bs73nnkk5gwx6" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://bqes2de80x08j" path="res://player.gd" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://d2rd4gi675eyo" path="res://grapple.gd" id="3_lquwl"]
 [ext_resource type="PackedScene" uid="uid://cy17tvc7chv6h" path="res://smallBox.tscn" id="4_1bvp3"]
+[ext_resource type="Script" uid="uid://bue5bta51uvhm" path="res://label.gd" id="4_272bh"]
 [ext_resource type="PackedScene" uid="uid://cp7j7pvxr81fk" path="res://mediumBox.tscn" id="5_7mycd"]
 [ext_resource type="PackedScene" uid="uid://0nohxjpd1ve" path="res://largeBox.tscn" id="6_272bh"]
 
@@ -23,7 +24,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.474043, -0.291093)
 
 [node name="RayCast3D" type="RayCast3D" parent="Player/Camera3D"]
 transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0, -0.00312829, 0.291093)
-target_position = Vector3(0, -50, 0)
+target_position = Vector3(0, -75, 0)
 
 [node name="Grapple" type="MeshInstance3D" parent="Player/Camera3D/RayCast3D"]
 transform = Transform3D(1.91069e-15, 1, 4.37114e-08, 4.37114e-08, -4.37114e-08, 1, 1, 0, -4.37114e-08, -0.470915, 2.05843e-08, 0)
@@ -48,7 +49,7 @@ light_energy = 0.125
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
 
-[node name="Label" type="Label" parent="CanvasLayer"]
+[node name="Label" type="Label" parent="CanvasLayer" node_paths=PackedStringArray("player")]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -61,6 +62,8 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "O"
+script = ExtResource("4_272bh")
+player = NodePath("../../Player")
 
 [node name="Level" type="Node" parent="."]
 
