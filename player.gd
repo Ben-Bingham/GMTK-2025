@@ -30,6 +30,7 @@ signal cannot_swing;
 signal start_grapple;
 signal stop_grapple;
 
+var hasWon = false;
 signal finish;
 
 @export var finishSphere : StaticBody3D;
@@ -141,8 +142,9 @@ func _physics_process(dt):
 			var targetPos = (grapplePoint - global_position).normalized();
 			var directionOfTravel = initRight.cross(targetPos);
 				
-			if (grapplePoint - finishSphere.global_position).length() < 11.0:
+			if (grapplePoint - finishSphere.global_position).length() < 11.0 && !hasWon:
 				finish.emit();
+				hasWon = true;
 			
 			var input = Input.get_vector("move_left", "move_right", "move_forward", "move_backward");
 			var vy = velocity.y;
