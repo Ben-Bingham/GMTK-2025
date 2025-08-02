@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bdk1ln40ogjde"]
+[gd_scene load_steps=12 format=3 uid="uid://bdk1ln40ogjde"]
 
 [ext_resource type="Script" uid="uid://bs73nnkk5gwx6" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://bqes2de80x08j" path="res://player.gd" id="1_ig7tw"]
@@ -9,6 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://0nohxjpd1ve" path="res://largeBox.tscn" id="6_272bh"]
 
 [sub_resource type="ImmediateMesh" id="ImmediateMesh_7mycd"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_272bh"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_272bh"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7dm0k"]
 
@@ -32,6 +37,12 @@ mesh = SubResource("ImmediateMesh_7mycd")
 skeleton = NodePath("../../..")
 script = ExtResource("3_lquwl")
 player = NodePath("../../..")
+
+[node name="Hook" type="MeshInstance3D" parent="Player/Camera3D/RayCast3D/Grapple"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 2.25695e-35, 0, -2.25695e-35, 1.5, 0, 0, 0)
+visible = false
+material_override = SubResource("StandardMaterial3D_272bh")
+mesh = SubResource("SphereMesh_272bh")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
 shape = SubResource("CapsuleShape3D_7dm0k")
