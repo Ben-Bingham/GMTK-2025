@@ -658,10 +658,11 @@ offset_left = 67.0
 offset_top = 73.0
 offset_right = 400.0
 offset_bottom = 161.0
-text = "Game Title"
+text = "Speed Grapple 3D"
 label_settings = SubResource("LabelSettings_2cqfq")
 
 [node name="StartAndResume" type="Button" parent="PauseMenu"]
+z_index = 2
 offset_left = 146.0
 offset_top = 159.0
 offset_right = 278.0
@@ -671,6 +672,7 @@ text = "Resume"
 flat = true
 
 [node name="Quit" type="Button" parent="PauseMenu"]
+z_index = 2
 offset_left = 171.0
 offset_top = 202.0
 offset_right = 303.0
@@ -679,6 +681,15 @@ theme_override_font_sizes/font_size = 32
 text = "Quit
 "
 flat = true
+
+[node name="ColorRect" type="ColorRect" parent="PauseMenu"]
+z_index = -1
+offset_left = 57.0
+offset_top = 80.0
+offset_right = 633.0
+offset_bottom = 263.0
+mouse_filter = 2
+color = Color(0.215902, 0.215902, 0.215902, 1)
 
 [node name="Settings" type="CanvasLayer" parent="."]
 
