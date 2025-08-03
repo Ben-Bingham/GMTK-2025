@@ -1,19 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://dekowflcwmdca"]
+[gd_scene load_steps=6 format=3 uid="uid://cmqht2bglicqw"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7dm0k"]
-friction = 0.1
+[ext_resource type="Texture2D" uid="uid://cirjjh6v70hv5" path="res://icon.svg" id="1_oj3tl"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_0xm2m"]
-size = Vector3(10, 0.2, 10)
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_oj3tl"]
+friction = 20.0
+rough = true
 
-[sub_resource type="BoxMesh" id="BoxMesh_h2yge"]
-size = Vector3(10, 0.2, 10)
+[sub_resource type="BoxShape3D" id="BoxShape3D_7dm0k"]
+size = Vector3(100, 1, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1bvp3"]
+albedo_texture = ExtResource("1_oj3tl")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_ig7tw"]
+size = Vector3(100, 1, 100)
 
 [node name="Floor" type="StaticBody3D"]
-physics_material_override = SubResource("PhysicsMaterial_7dm0k")
+physics_material_override = SubResource("PhysicsMaterial_oj3tl")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_0xm2m")
+shape = SubResource("BoxShape3D_7dm0k")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_h2yge")
+material_override = SubResource("StandardMaterial3D_1bvp3")
+mesh = SubResource("BoxMesh_ig7tw")

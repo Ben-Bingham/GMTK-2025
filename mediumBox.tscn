@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cp7j7pvxr81fk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oyhfb"]
+size = Vector3(20, 20, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g2tbl"]
+albedo_color = Color(0.913725, 0.223529, 0.960784, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_oq5cr"]
+size = Vector3(20, 20, 20)
+
+[node name="MediumBox" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_oyhfb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_g2tbl")
+mesh = SubResource("BoxMesh_oq5cr")

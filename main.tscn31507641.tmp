@@ -1,0 +1,222 @@
+[gd_scene load_steps=8 format=3 uid="uid://bdk1ln40ogjde"]
+
+[ext_resource type="Script" uid="uid://bs73nnkk5gwx6" path="res://main.gd" id="1_0xm2m"]
+[ext_resource type="Script" uid="uid://bqes2de80x08j" path="res://player.gd" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://cmqht2bglicqw" path="res://floor.tscn" id="3_h2yge"]
+[ext_resource type="Script" uid="uid://d2rd4gi675eyo" path="res://grapple.gd" id="3_lquwl"]
+[ext_resource type="PackedScene" uid="uid://cy17tvc7chv6h" path="res://box.tscn" id="4_1bvp3"]
+
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_7mycd"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7dm0k"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_0xm2m")
+
+[node name="Player" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.39905, 0)
+script = ExtResource("1_ig7tw")
+lookSensitivity = null
+groundSpeed = null
+jumpSpeed = null
+gravity = null
+grappleSpeed = null
+
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.474043, -0.291093)
+
+[node name="RayCast3D" type="RayCast3D" parent="Player/Camera3D"]
+transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0, -0.00312829, 0.291093)
+target_position = Vector3(0, -50, 0)
+
+[node name="Grapple" type="MeshInstance3D" parent="Player/Camera3D/RayCast3D"]
+transform = Transform3D(1.91069e-15, 1, 4.37114e-08, 4.37114e-08, -4.37114e-08, 1, 1, 0, -4.37114e-08, -0.470915, 2.05843e-08, 0)
+mesh = SubResource("ImmediateMesh_7mycd")
+skeleton = NodePath("../../..")
+script = ExtResource("3_lquwl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("CapsuleShape3D_7dm0k")
+
+[node name="Test World" type="Node" parent="."]
+
+[node name="Box" parent="Test World" instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1082, -1.74019, -10.0257)
+
+[node name="Box8" parent="Test World" instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.1082, 25.2598, -2.02566)
+
+[node name="Box11" parent="Test World" instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.3053, 30.9434, 23.8201)
+
+[node name="Box12" parent="Test World" instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.80759, 41.711, 42.6952)
+
+[node name="Box13" parent="Test World" instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.01341, 56.683, -60.4479)
+
+[node name="Box14" parent="Test World" instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.5206, 56.683, 15.5511)
+
+[node name="Box15" parent="Test World" instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.7857, 22.1169, -24.3392)
+
+[node name="Box16" parent="Test World" instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.58181, 31.1216, -4.90888)
+
+[node name="Box9" parent="Test World" instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.1082, 30.2598, -2.02566)
+
+[node name="Box10" parent="Test World" instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.1082, 35.2598, -2.02566)
+
+[node name="Box2" parent="Test World" instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1082, 1.4664, -20.0257)
+
+[node name="Box3" parent="Test World" instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1082, 5.4664, -30.0257)
+
+[node name="Box4" parent="Test World" instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.1082, 5.4664, -30.0257)
+
+[node name="Box5" parent="Test World" instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.1082, 5.4664, -30.0257)
+
+[node name="Box6" parent="Test World" instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.1082, 5.4664, -30.0257)
+
+[node name="Floor" parent="Test World" instance=ExtResource("3_h2yge")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Test World"]
+transform = Transform3D(0.89355, -0.251752, 0.371738, 0.017458, 0.846849, 0.531546, -0.448624, -0.468474, 0.761097, 0, 6.42251, 0)
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="Test World"]
+transform = Transform3D(1, 0, 0, 0, -0.741824, 0.670595, 0, -0.670595, -0.741824, 26.1271, 36.7534, -36.557)
+light_energy = 0.125
+
+[node name="Box7" parent="Test World" instance=ExtResource("4_1bvp3")]
+transform = Transform3D(0.662058, 0, -0.749453, 0, 1, 0, 0.749453, 0, 0.662058, 80.8833, -1.74019, 85.4519)
+
+[node name="Box17" parent="Test World" instance=ExtResource("4_1bvp3")]
+transform = Transform3D(0.662058, 0, -0.749453, 0, 1, 0, 0.749453, 0, 0.662058, 81.5083, 25.2598, 98.2429)
+
+[node name="Box18" parent="Test World" instance=ExtResource("4_1bvp3")]
+transform = Transform3D(0.662058, 0, -0.749453, 0, 1, 0, 0.749453, 0, 0.662058, 38.6923, 30.9434, 88.8135)
+
+[node name="Box19" parent="Test World" instance=ExtResource("4_1bvp3")]
+transform = Transform3D(0.662058, 0, -0.749453, 0, 1, 0, 0.749453, 0, 0.662058, 44.4828, 41.711, 123.878)
+
+[node name="Box20" parent="Test World" instance=ExtResource("4_1bvp3")]
+transform = Transform3D(0.662058, 0, -0.749453, 0, 1, 0, 0.749453, 0, 0.662058, 111.971, 56.683, 44.4838)
+
+[node name="Box21" parent="Test World" instance=ExtResource("4_1bvp3")]
+transform = Transform3D(0.662058, 0, -0.749453, 0, 1, 0, 0.749453, 0, 0.662058, 90.4562, 56.683, 134.921)
+
+[node name="Box22" parent="Test World" instance=ExtResource("4_1bvp3")]
+transform = Transform3D(0.662058, 0, -0.749453, 0, 1, 0, 0.749453, 0, 0.662058, 65.1986, 22.1169, 46.0769)
+
+[node name="Box23" parent="Test World" instance=ExtResource("4_1bvp3")]
+transform = Transform3D(0.662058, 0, -0.749453, 0, 1, 0, 0.749453, 0, 0.662058, 70.6332, 31.1216, 81.5773)
+
+[node name="Box24" parent="Test World" instance=ExtResource("4_1bvp3")]
+transform = Transform3D(0.662058, 0, -0.749453, 0, 1, 0, 0.749453, 0, 0.662058, 88.1288, 30.2598, 105.737)
+
+[node name="Box25" parent="Test World" instance=ExtResource("4_1bvp3")]
+transform = Transform3D(0.662058, 0, -0.749453, 0, 1, 0, 0.749453, 0, 0.662058, 94.7494, 35.2598, 113.232)
+
+[node name="Box26" parent="Test World" instance=ExtResource("4_1bvp3")]
+transform = Transform3D(0.662058, 0, -0.749453, 0, 1, 0, 0.749453, 0, 0.662058, 88.3779, 1.4664, 78.8313)
+
+[node name="Box27" parent="Test World" instance=ExtResource("4_1bvp3")]
+transform = Transform3D(0.662058, 0, -0.749453, 0, 1, 0, 0.749453, 0, 0.662058, 95.8724, 5.4664, 72.2107)
+
+[node name="Box28" parent="Test World" instance=ExtResource("4_1bvp3")]
+transform = Transform3D(0.662058, 0, -0.749453, 0, 1, 0, 0.749453, 0, 0.662058, 102.493, 5.4664, 79.7052)
+
+[node name="Box29" parent="Test World" instance=ExtResource("4_1bvp3")]
+transform = Transform3D(0.662058, 0, -0.749453, 0, 1, 0, 0.749453, 0, 0.662058, 109.114, 5.4664, 87.1998)
+
+[node name="Box30" parent="Test World" instance=ExtResource("4_1bvp3")]
+transform = Transform3D(0.662058, 0, -0.749453, 0, 1, 0, 0.749453, 0, 0.662058, 115.734, 5.4664, 94.6943)
+
+[node name="Floor2" parent="Test World" instance=ExtResource("3_h2yge")]
+transform = Transform3D(0.662058, 0, -0.749453, 0, 1, 0, 0.749453, 0, 0.662058, 72.6359, 0, 91.2589)
+
+[node name="DirectionalLight3D3" type="DirectionalLight3D" parent="Test World"]
+transform = Transform3D(0.927804, 0.184425, -0.324294, 0.017458, 0.846849, 0.531547, 0.372659, -0.498833, 0.78249, 72.6359, 6.42251, 91.2589)
+
+[node name="DirectionalLight3D4" type="DirectionalLight3D" parent="Test World"]
+transform = Transform3D(0.662058, 0.502579, 0.555962, 0, -0.741824, 0.670595, 0.749453, -0.443972, -0.49113, 117.331, 36.7534, 86.6371)
+light_energy = 0.125
+
+[node name="Box31" parent="Test World" instance=ExtResource("4_1bvp3")]
+transform = Transform3D(0.662058, 0, -0.749453, 0, 1, 0, 0.749453, 0, 0.662058, 125.342, -1.74019, 205.972)
+
+[node name="Box32" parent="Test World" instance=ExtResource("4_1bvp3")]
+transform = Transform3D(0.662058, 0, -0.749453, 0, 1, 0, 0.749453, 0, 0.662058, 125.967, 25.2598, 218.763)
+
+[node name="Box33" parent="Test World" instance=ExtResource("4_1bvp3")]
+transform = Transform3D(0.662058, 0, -0.749453, 0, 1, 0, 0.749453, 0, 0.662058, 83.1514, 30.9434, 209.333)
+
+[node name="Box34" parent="Test World" instance=ExtResource("4_1bvp3")]
+transform = Transform3D(0.662058, 0, -0.749453, 0, 1, 0, 0.749453, 0, 0.662058, 88.9419, 41.711, 244.398)
+
+[node name="Box35" parent="Test World" instance=ExtResource("4_1bvp3")]
+transform = Transform3D(0.662058, 0, -0.749453, 0, 1, 0, 0.749453, 0, 0.662058, 156.43, 56.683, 165.003)
+
+[node name="Box36" parent="Test World" instance=ExtResource("4_1bvp3")]
+transform = Transform3D(0.662058, 0, -0.749453, 0, 1, 0, 0.749453, 0, 0.662058, 134.915, 56.683, 255.44)
+
+[node name="Box37" parent="Test World" instance=ExtResource("4_1bvp3")]
+transform = Transform3D(0.662058, 0, -0.749453, 0, 1, 0, 0.749453, 0, 0.662058, 109.658, 22.1169, 166.597)
+
+[node name="Box38" parent="Test World" instance=ExtResource("4_1bvp3")]
+transform = Transform3D(0.662058, 0, -0.749453, 0, 1, 0, 0.749453, 0, 0.662058, 115.092, 31.1216, 202.097)
+
+[node name="Box39" parent="Test World" instance=ExtResource("4_1bvp3")]
+transform = Transform3D(0.662058, 0, -0.749453, 0, 1, 0, 0.749453, 0, 0.662058, 132.588, 30.2598, 226.257)
+
+[node name="Box40" parent="Test World" instance=ExtResource("4_1bvp3")]
+transform = Transform3D(0.662058, 0, -0.749453, 0, 1, 0, 0.749453, 0, 0.662058, 139.209, 35.2598, 233.752)
+
+[node name="Box41" parent="Test World" instance=ExtResource("4_1bvp3")]
+transform = Transform3D(0.662058, 0, -0.749453, 0, 1, 0, 0.749453, 0, 0.662058, 132.837, 1.4664, 199.351)
+
+[node name="Box42" parent="Test World" instance=ExtResource("4_1bvp3")]
+transform = Transform3D(0.662058, 0, -0.749453, 0, 1, 0, 0.749453, 0, 0.662058, 140.332, 5.4664, 192.73)
+
+[node name="Box43" parent="Test World" instance=ExtResource("4_1bvp3")]
+transform = Transform3D(0.662058, 0, -0.749453, 0, 1, 0, 0.749453, 0, 0.662058, 146.952, 5.4664, 200.225)
+
+[node name="Box44" parent="Test World" instance=ExtResource("4_1bvp3")]
+transform = Transform3D(0.662058, 0, -0.749453, 0, 1, 0, 0.749453, 0, 0.662058, 153.573, 5.4664, 207.719)
+
+[node name="Box45" parent="Test World" instance=ExtResource("4_1bvp3")]
+transform = Transform3D(0.662058, 0, -0.749453, 0, 1, 0, 0.749453, 0, 0.662058, 160.193, 5.4664, 215.214)
+
+[node name="Floor3" parent="Test World" instance=ExtResource("3_h2yge")]
+transform = Transform3D(0.662058, 0, -0.749453, 0, 1, 0, 0.749453, 0, 0.662058, 117.095, 0, 211.779)
+
+[node name="DirectionalLight3D5" type="DirectionalLight3D" parent="Test World"]
+transform = Transform3D(0.927804, 0.184425, -0.324294, 0.017458, 0.846849, 0.531547, 0.372659, -0.498833, 0.78249, 117.095, 6.42251, 211.779)
+
+[node name="DirectionalLight3D6" type="DirectionalLight3D" parent="Test World"]
+transform = Transform3D(0.662058, 0.502579, 0.555962, 0, -0.741824, 0.670595, 0.749453, -0.443972, -0.49113, 161.79, 36.7534, 207.157)
+light_energy = 0.125
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "O"
