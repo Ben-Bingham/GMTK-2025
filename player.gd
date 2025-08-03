@@ -35,11 +35,47 @@ signal finish;
 
 @export var finishSphere : StaticBody3D;
 
+var enableInput = false;
+
+func gameStart():
+	enableInput = true;
+	
+func gameUnpause():
+	enableInput = true;
+
+func pause():
+	enableInput = false;
+
+func restart():
+	position = Vector3(0.0, 2.234, 0.0);
+	rotation = Vector3(0.0, deg_to_rad(-90.0), 0.0);
+	forward = Vector3(0.0, 0.0, -1.0);
+	right = Vector3(1.0, 0.0, 0.0);
+	up_direction = Vector3(0.0, 1.0, 0.0);
+	state = State.FALLING;
+	
+	velocity = Vector3();
+	
+	var cam = $Camera3D;
+	cam.rotation = Vector3(0.0, 0.0, 0.0);
+	
+	hasWon = false;
+	
+	var grapple = $Camera3D/RayCast3D/Grapple;
+	grapple.grappling = false;
+	
+	var hook = $Camera3D/RayCast3D/Grapple/Hook;
+	hook.hide();
+	
 func _ready():
 	motion_mode = CharacterBody3D.MOTION_MODE_GROUNDED;
+	get_parent().connect("startGame", gameStart);
+	get_parent().connect("unpause", gameUnpause);
+	get_parent().connect("pause", pause);
+	get_parent().connect("restart", restart);
 
 func _input(event):
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion && enableInput:
 		rotate_y(-event.relative.x * lookSensitivity);
 		forward = forward.rotated(Vector3.UP, -event.relative.x * lookSensitivity);
 				
@@ -53,13 +89,13 @@ func _physics_process(dt):
 
 	match state:
 		State.IDLE:
-			if Input.get_vector("move_left", "move_right", "move_backward", "move_forward"):
+			if Input.get_vector("move_left", "move_right", "move_backward", "move_forward") && enableInput:
 				state = State.RUNNING
 
-			if Input.is_action_pressed("jump"):
+			if Input.is_action_pressed("jump") && enableInput:
 				state = State.JUMPING;
 				
-			if Input.is_action_pressed("grapple") && rayCast.is_colliding():
+			if Input.is_action_pressed("grapple") && rayCast.is_colliding() && enableInput:
 				grapplePoint = rayCast.get_collision_point();
 				state = State.GRAPPLING;
 				start_grapple.emit();
@@ -81,10 +117,10 @@ func _physics_process(dt):
 				state = State.FALLING;
 
 		State.RUNNING:
-			if !Input.get_vector("move_left", "move_right", "move_backward", "move_forward"):
+			if !Input.get_vector("move_left", "move_right", "move_backward", "move_forward") && enableInput:
 				state = State.IDLE;
 
-			if Input.is_action_pressed("grapple") && rayCast.is_colliding():
+			if Input.is_action_pressed("grapple") && rayCast.is_colliding() && enableInput:
 				grapplePoint = rayCast.get_collision_point();
 				state = State.GRAPPLING;
 				start_grapple.emit();
@@ -105,7 +141,7 @@ func _physics_process(dt):
 			if velocity.length() > maxGroundSpeed:
 				velocity = velocity.normalized() * maxGroundSpeed;
 
-			if Input.is_action_pressed("jump"):
+			if Input.is_action_pressed("jump") && enableInput:
 				state = State.JUMPING;
 
 			if !is_on_floor():
@@ -116,7 +152,7 @@ func _physics_process(dt):
 			state = State.FALLING;
 
 		State.FALLING:
-			if Input.is_action_pressed("grapple") && rayCast.is_colliding():
+			if Input.is_action_pressed("grapple") && rayCast.is_colliding() && enableInput:
 				grapplePoint = rayCast.get_collision_point();
 				state = State.GRAPPLING;
 				start_grapple.emit();

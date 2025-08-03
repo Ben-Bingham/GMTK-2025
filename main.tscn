@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bdk1ln40ogjde"]
+[gd_scene load_steps=31 format=3 uid="uid://bdk1ln40ogjde"]
 
 [ext_resource type="Script" uid="uid://bs73nnkk5gwx6" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://bqes2de80x08j" path="res://player.gd" id="1_ig7tw"]
@@ -68,6 +68,9 @@ volumetric_fog_density = 0.0316
 adjustment_enabled = true
 adjustment_saturation = 1.3
 
+[sub_resource type="LabelSettings" id="LabelSettings_2cqfq"]
+font_size = 64
+
 [node name="Main" type="Node"]
 script = ExtResource("1_0xm2m")
 
@@ -124,10 +127,11 @@ volume_db = -40.32
 autoplay = true
 script = ExtResource("11_2cqfq")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="InGameUI" type="CanvasLayer" parent="."]
+visible = false
 follow_viewport_enabled = true
 
-[node name="Crosshair" type="Label" parent="CanvasLayer" node_paths=PackedStringArray("player")]
+[node name="Crosshair" type="Label" parent="InGameUI" node_paths=PackedStringArray("player")]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -143,7 +147,7 @@ text = "O"
 script = ExtResource("4_272bh")
 player = NodePath("../../Player")
 
-[node name="Stopwatch" type="Label" parent="CanvasLayer" node_paths=PackedStringArray("player")]
+[node name="Stopwatch" type="Label" parent="InGameUI" node_paths=PackedStringArray("player", "main")]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -154,8 +158,9 @@ grow_horizontal = 2
 label_settings = SubResource("LabelSettings_5vw27")
 script = ExtResource("5_5vw27")
 player = NodePath("../../Player")
+main = NodePath("../..")
 
-[node name="Done" type="Label" parent="CanvasLayer/Stopwatch"]
+[node name="Done" type="Label" parent="InGameUI/Stopwatch"]
 visible = false
 layout_mode = 0
 offset_left = -447.5
@@ -165,7 +170,7 @@ offset_bottom = 428.0
 text = "Final Time: 9999.999"
 label_settings = SubResource("LabelSettings_kek77")
 
-[node name="Restart" type="Label" parent="CanvasLayer/Stopwatch/Done"]
+[node name="Restart" type="Label" parent="InGameUI/Stopwatch/Done"]
 layout_mode = 0
 offset_left = 44.0
 offset_top = 122.0
@@ -638,7 +643,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 630.196, -60.3901, 69.9272)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.8464, 0)
 
 [node name="Finish Line" type="StaticBody3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2424.35, -36.6014, 43.3821)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.3861, -36.6014, 43.3821)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Finish Line"]
 shape = SubResource("SphereShape3D_272bh")
@@ -650,4 +655,45 @@ mesh = SubResource("SphereMesh_kek77")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_4c57u")
 
+[node name="PauseMenu" type="CanvasLayer" parent="."]
+
+[node name="Title" type="Label" parent="PauseMenu"]
+offset_left = 67.0
+offset_top = 73.0
+offset_right = 400.0
+offset_bottom = 161.0
+text = "Game Title"
+label_settings = SubResource("LabelSettings_2cqfq")
+
+[node name="StartAndResume" type="Button" parent="PauseMenu"]
+offset_left = 146.0
+offset_top = 159.0
+offset_right = 278.0
+offset_bottom = 212.0
+theme_override_font_sizes/font_size = 32
+text = "Resume"
+flat = true
+
+[node name="Settings" type="Button" parent="PauseMenu"]
+offset_left = 189.0
+offset_top = 211.0
+offset_right = 321.0
+offset_bottom = 264.0
+theme_override_font_sizes/font_size = 32
+text = "Settings"
+flat = true
+
+[node name="Quit" type="Button" parent="PauseMenu"]
+offset_left = 233.0
+offset_top = 259.0
+offset_right = 365.0
+offset_bottom = 312.0
+theme_override_font_sizes/font_size = 32
+text = "Quit
+"
+flat = true
+
 [connection signal="finished" from="Player/Music" to="Player/Music" method="_on_finished"]
+[connection signal="button_down" from="PauseMenu/StartAndResume" to="." method="_on_start_and_resume_button_down"]
+[connection signal="button_down" from="PauseMenu/Settings" to="." method="_on_settings_button_down"]
+[connection signal="button_down" from="PauseMenu/Quit" to="." method="_on_quit_button_down"]
