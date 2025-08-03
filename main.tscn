@@ -643,7 +643,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 630.196, -60.3901, 69.9272)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.8464, 0)
 
 [node name="Finish Line" type="StaticBody3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.3861, -36.6014, 43.3821)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2491.86, -36.6014, 43.3821)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Finish Line"]
 shape = SubResource("SphereShape3D_272bh")
